@@ -1,234 +1,146 @@
-const questions=[
-
+const questions = [
 {
 q:"namma pona trip la namaku romba pudicha trip ena?",
 a:"madurai"
 },
-
 {
 q:"Nee en life la entha movie character?",
 a:"shobana"
 },
-
 {
 q:"Enaku unta romba pudicha character ena?",
 a:"caring"
 },
-
 {
 q:"Na epa vanathula parapean nu sollirukean?",
 a:"holding hands"
 },
-
 {
 q:"enaku pudicha colour ena?(HINT:ASK ME)",
 a:"briyani"
 }
+];
 
-]
-
-let current=0
-
-let flowerCount=0
-
-
+let current = 0;
+let flowerCount = 0;
 
 function show(id){
 
 document
 .querySelectorAll(".page")
-.forEach(
-x=>
-x.style.display="none"
-)
+.forEach(page=>{
+page.style.display="none";
+});
 
-document
-.getElementById(id)
-.style.display="block"
+const page =
+document.getElementById(id);
 
+if(page){
+page.style.display="block";
 }
 
-
+}
 
 function startGift(){
 
-let n=
+let n =
 document
-.getElementById(
-"name"
-)
+.getElementById("name")
 .value
 .toLowerCase()
+.trim();
 
-if(
-n==="nan tha"
-){
+if(n==="nan tha"){
 
-show(
-"welcome"
-)
+show("welcome");
 
-}
-else{
+}else{
 
-alert(
-"Wrong name ❤️"
-)
+alert("Wrong name ❤️");
 
 }
 
 }
-
-
 
 function showQuestion(){
 
-show(
-"questionPage"
-)
+show("questionPage");
 
-loadQuestion()
+loadQuestion();
 
 }
-
-
 
 function loadQuestion(){
 
-document
-.getElementById(
-"qText"
-)
-.innerHTML=
-
-`Question ${
-current+1
-}/5<br><br>${
-questions[current].q
-}`
+document.getElementById("qText").innerHTML =
+`Question ${current+1}/5<br><br>${questions[current].q}`;
 
 }
-
-
 
 function submitAnswer(){
 
-let ans=
+let ans =
 document
-.getElementById(
-"answer"
-)
+.getElementById("answer")
 .value
 .toLowerCase()
-.trim()
+.trim();
 
-if(
-ans===
-questions[current].a
-){
+if(ans===questions[current].a){
 
-flowerCount++
+flowerCount++;
 
-document
-.getElementById(
-"result"
-)
-.innerHTML="🌹 Correct ❤️"
+document.getElementById("result").innerHTML =
+"🌹 Correct ❤️";
 
-document
-.getElementById(
-"flowers"
-)
-.innerHTML=
-
-"🌹".repeat(
-flowerCount)
+document.getElementById("flowers").innerHTML =
+"🌹".repeat(flowerCount);
 
 setTimeout(()=>{
 
-current++
+current++;
 
-document
-.getElementById(
-"answer"
-).value=""
+document.getElementById("answer").value="";
 
-document
-.getElementById(
-"result"
-).innerHTML=""
+document.getElementById("result").innerHTML="";
 
-if(
-current<5
-){
+if(current < questions.length){
 
-loadQuestion()
+loadQuestion();
+
+}else{
+
+show("photos");
 
 }
 
-else{
+},1200);
 
-show(
-"photos"
-)
+}else{
 
-}
+document.getElementById("result").innerHTML =
+"😭 Wrong Answer<br>Try Again";
 
-},1200)
-
-}
-
-else{
-
-document
-.getElementById(
-"result"
-)
-.innerHTML=
-
-"😭 Wrong Answer<br>Try Again"
-
-document
-.getElementById(
-"answer"
-)
-.value=""
+document.getElementById("answer").value="";
 
 }
 
 }
-
-
 
 function openLetter(){
 
-show(
-"letterPage"
-)
+show("letterPage");
 
-document
-.getElementById(
-"flowerCount"
-)
-.innerHTML=
+document.getElementById("flowerCount").innerHTML =
+"Your flowers:<br><br>" +
+"🌹".repeat(flowerCount);
 
-"Your flowers:<br><br>"
-+
-"🌹".repeat(
-flowerCount
-)
-
-typeLetter()
+typeLetter();
 
 }
 
-
-
-const msg=
-
-`
+const msg = `
 Ooi en pattu Chella akshu happy birthday di en thanga pulla unaku oru kavitha eluthi tharean nu sonenla yartayum katatha enaku shy shy agum thaniya padi di
-
 
 நீ வெட்கப்பட்டு பேசத் தயங்கும் வார்த்தைகளை பேசும் உன் கண்கள் எனக்கு பிடிக்கும்.
 
@@ -258,128 +170,114 @@ Ooi en pattu Chella akshu happy birthday di en thanga pulla unaku oru kavitha el
 ஏன் என்றால் எனக்கு உன்னை மட்டும் தான் பிடிக்கும் 💞
 
 time illa di konjam mokkaya tha irukum kavitha adjust panniko aprma super a eluthi tharean 🌹
-eppavumae happy ya iru happy ya tha irupa because na un kuda irupean Happy BIRTHDAY di en chella karadi kutti
-❤️
-`
 
+eppavumae happy ya iru happy ya tha irupa because na un kuda irupean
 
+Happy Birthday di en chella karadi kutti ❤️
+`;
 
 function typeLetter(){
 
-let i=0
+let i = 0;
 
-let box=
-document
-.getElementById(
-"letter"
-)
+let box =
+document.getElementById("letter");
 
-box.innerHTML=""
+box.innerHTML="";
 
-let t=
-setInterval(()=>{
+let timer = setInterval(()=>{
 
-box.innerHTML+=
-msg.charAt(i)
+box.innerHTML += msg.charAt(i);
 
-i++
+i++;
 
-if(
-i>=msg.length
-){
+if(i >= msg.length){
 
-clearInterval(t)
+clearInterval(timer);
 
 }
 
-},40)
+},40);
 
 }
 
-
+/* Floating Hearts */
 
 setInterval(()=>{
 
-let h=
-document.createElement(
-"div"
-)
+let h =
+document.createElement("div");
 
-h.className=
-"heart"
+h.className="heart";
 
-h.innerHTML="❤️"
+h.innerHTML="❤️";
 
-h.style.left=
-Math.random()*90
-+"vw"
+h.style.left =
+Math.random()*90 + "vw";
 
-document.body.appendChild(
-h
-)
+document.body.appendChild(h);
 
 setTimeout(()=>{
 
-h.remove()
+h.remove();
 
-},5000)
+},5000);
 
-},1200)
+},1200);
+
+/* Music */
+
 document.body.addEventListener(
 "click",
 ()=>{
 
-document
-.getElementById(
-"bgmusic"
-)
-.play()
+let music =
+document.getElementById("bgmusic");
+
+if(music){
+
+music.play().catch(()=>{});
+
+}
 
 },
 {
 once:true
 }
-)
-const slides=[
+);
 
-document.getElementById(
-"bg1"
-),
+/* Background Slideshow */
 
-document.getElementById(
-"bg2"
-),
+window.addEventListener(
+"load",
+()=>{
 
-document.getElementById(
-"bg3"
-)
+const slides = [
 
-]
+document.getElementById("bg1"),
+document.getElementById("bg2"),
+document.getElementById("bg3")
 
-let currentSlide=0
+].filter(Boolean);
+
+if(slides.length===0){
+return;
+}
+
+let currentSlide = 0;
 
 setInterval(()=>{
 
 slides[currentSlide]
-.classList
-.remove(
-"active"
-)
+.classList.remove("active");
 
-currentSlide=
-
-(
-currentSlide+1
-)
-
-%
-
-slides.length
+currentSlide =
+(currentSlide + 1) %
+slides.length;
 
 slides[currentSlide]
-.classList
-.add(
-"active"
-)
+.classList.add("active");
 
-},4000)
+},4000);
+
+});
