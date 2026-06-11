@@ -265,22 +265,21 @@ margin-top:20px;
 
 background:white;
 
-padding:25px;
+padding:30px;
 
 border-radius:20px;
 
-line-height:2;
+line-height:2.2;
+
+white-space:pre-wrap;
 
 text-align:left;
 
+font-size:18px;
+
 box-shadow:
 0 10px 30px
-rgba(
-0,
-0,
-0,
-0.1
-);
+rgba(0,0,0,.12);
 
 }
 
