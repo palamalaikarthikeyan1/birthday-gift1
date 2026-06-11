@@ -4,15 +4,17 @@ padding:0;
 box-sizing:border-box;
 }
 
+
+
 body{
 
 font-family:sans-serif;
 
-min-height:100vh;
-
 overflow-x:hidden;
 
 text-align:center;
+
+padding:20px;
 
 }
 
@@ -44,7 +46,7 @@ z-index:-3;
 
 .bg.active{
 
-opacity:.35;
+opacity:.30;
 
 }
 
@@ -67,7 +69,7 @@ rgba(
 255,
 240,
 245,
-0.55
+0.45
 );
 
 z-index:-2;
@@ -78,19 +80,19 @@ z-index:-2;
 
 .container{
 
+width:100%;
+
+max-width:500px;
+
+margin:auto;
+
+padding:20px;
+
 display:flex;
 
 flex-direction:column;
 
 align-items:center;
-
-justify-content:center;
-
-width:100%;
-
-min-height:100vh;
-
-padding:30px;
 
 }
 
@@ -100,9 +102,7 @@ padding:30px;
 
 width:100%;
 
-max-width:700px;
-
-display:block;
+padding:20px;
 
 }
 
@@ -118,16 +118,18 @@ display:none;
 
 .hero{
 
-width:260px;
+width:100%;
 
-max-width:90%;
+max-width:280px;
+
+height:auto;
 
 border-radius:20px;
 
 margin-top:20px;
 
 box-shadow:
-0 10px 30px
+0 10px 25px
 rgba(
 0,
 0,
@@ -141,9 +143,9 @@ rgba(
 
 input{
 
-width:90%;
+width:100%;
 
-max-width:300px;
+max-width:320px;
 
 padding:14px;
 
@@ -161,7 +163,7 @@ button{
 
 margin-top:20px;
 
-padding:14px 28px;
+padding:14px 30px;
 
 border:none;
 
@@ -181,11 +183,10 @@ cursor:pointer;
 
 .gallery{
 
-display:flex;
+display:grid;
 
-flex-wrap:wrap;
-
-justify-content:center;
+grid-template-columns:
+1fr 1fr;
 
 gap:15px;
 
@@ -197,9 +198,7 @@ margin-top:20px;
 
 .gallery img{
 
-width:170px;
-
-max-width:90%;
+width:100%;
 
 height:220px;
 
@@ -213,9 +212,9 @@ border-radius:20px;
 
 #result{
 
-margin-top:20px;
+font-size:35px;
 
-font-size:40px;
+margin-top:15px;
 
 }
 
@@ -227,11 +226,13 @@ margin-top:20px;
 
 background:white;
 
-padding:25px;
+padding:20px;
 
 border-radius:20px;
 
 line-height:2;
+
+text-align:left;
 
 }
 
@@ -245,17 +246,21 @@ p{
 margin-top:15px;
 
 }
+
+
+
 .heart{
 
 position:fixed;
 
 bottom:-50px;
 
-font-size:22px;
+font-size:20px;
 
 pointer-events:none;
 
-animation:floatUp 5s linear forwards;
+animation:
+floatUp 5s linear forwards;
 
 z-index:999;
 
@@ -280,6 +285,25 @@ transform:
 translateY(-120vh);
 
 opacity:0;
+
+}
+
+}
+
+
+
+@media(max-width:600px){
+
+.gallery{
+
+grid-template-columns:
+1fr;
+
+}
+
+.hero{
+
+max-width:100%;
 
 }
 
