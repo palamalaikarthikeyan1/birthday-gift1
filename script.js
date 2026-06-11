@@ -180,24 +180,36 @@ function typeLetter(){
 
 let i = 0;
 
-let box =
+const box =
 document.getElementById("letter");
 
-box.innerHTML="";
+box.textContent="";
 
-let timer = setInterval(()=>{
+function print(){
 
-box.innerHTML += msg.charAt(i);
+if(i < msg.length){
+
+box.textContent += msg[i];
 
 i++;
 
-if(i >= msg.length){
+setTimeout(
 
-clearInterval(timer);
+print,
+
+msg[i-1]==="\n"
+
+?120
+
+:30
+
+);
 
 }
 
-},40);
+}
+
+print();
 
 }
 
